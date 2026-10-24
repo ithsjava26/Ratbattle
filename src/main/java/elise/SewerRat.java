@@ -13,4 +13,8 @@ public class SewerRat implements RatEnemys {
     public boolean isAlive() {
         return health > 0;
     }
+
+    public int getHealth() {
+        return health;
+    }
 }
