@@ -1,5 +1,7 @@
 package elise;
 
+import java.util.Random;
+
 public class KingRat implements RatEnemys {
     // KingRat -> KungRåtta (nivå tre på råtta)
 
@@ -18,5 +20,18 @@ public class KingRat implements RatEnemys {
     @Override
     public int attack() {
         return 10;
+    }
+
+    @Override
+    public Reward getReward() {
+        // slumpar fram om belöningen är HP eller skott
+        // Hero-klassen hanterar vad belöningen är i mängd.
+        Random random = new Random();
+        int number = random.nextInt(2);
+
+        if (number == 1) {
+            return Reward.POTION;
+        }
+        return Reward.AMMO;
     }
 }
