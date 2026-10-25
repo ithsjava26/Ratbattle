@@ -1,6 +1,7 @@
 package elise;
 
 public class KingRat implements RatEnemys {
+    // KingRat -> KungRåtta (nivå tre på råtta)
 
     private int health = 100;
 
@@ -12,5 +13,10 @@ public class KingRat implements RatEnemys {
     @Override
     public boolean isAlive() {
         return health > 0;
+    }
+
+    @Override
+    public int attack() {
+        return 10;
     }
 }
