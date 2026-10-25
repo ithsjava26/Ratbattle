@@ -10,4 +10,7 @@ public interface RatEnemys {
 
     //abstrakt metod (måste implementeras)
     int attack();
+
+    //abstrakt metod (måste implementeras)
+    Reward getReward();
 }

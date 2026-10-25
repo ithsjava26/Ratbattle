@@ -1,5 +1,7 @@
 package elise;
 
+import java.util.Random;
+
 public class PlagueRat implements RatEnemys {
     // PlagueRat -> PestRåtta (nivå två på råtta)
 
@@ -34,5 +36,23 @@ public class PlagueRat implements RatEnemys {
     @Override
     public int attack() {
         return 7;
+    }
+
+    /**
+     * Metoden slumpar fram om hjältens belöning efter att ha dödat
+     * råttan skall vara i form av hälsodryck eller skott till pistolen.
+     * @return Reward.POTION eller Reward.AMMO beroende på slumpresultatet.
+     */
+    @Override
+    public Reward getReward() {
+        // slumpar fram om belöningen är HP eller skott
+        // Hero-klassen hanterar vad belöningen är i mängd.
+        Random random = new Random();
+        int number = random.nextInt(2);
+
+        if (number == 1) {
+            return Reward.POTION;
+        }
+        return Reward.AMMO;
     }
 }
