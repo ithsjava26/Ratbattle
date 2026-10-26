@@ -1,4 +1,4 @@
-package björn;
+package battle;
 
 public class Battle {
 
