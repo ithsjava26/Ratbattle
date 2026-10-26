@@ -6,7 +6,7 @@ public class Main {
     static void main() {
         String code = IO.readln("Enter pin code: ");
         if ("1234".equals(code))
-            IO.println("Welcome to the main program!");
+            System.exit(0);
         else
             IO.println("Wrong code!");
     }
