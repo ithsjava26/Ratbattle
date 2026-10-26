@@ -14,7 +14,10 @@ abstract class BaseWeapon implements Attackable {
     @Override
     public int causeDamage() {
         int attackChance = (int) ((Math.random() * 100) + 1);
+        return calculateDamage(attackChance);
+    }
 
+    public int calculateDamage(int attackChance) {
         if (attackChance <= 90)
             return baseDamage;
         else if (attackChance <= 95)
