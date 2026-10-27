@@ -1,6 +1,6 @@
 package weapons;
 
-abstract class BaseWeapon implements Attackable {
+abstract class BaseWeapon implements Attackable, Item {
 
     private final String name;
     private final int baseDamage;
@@ -24,6 +24,11 @@ abstract class BaseWeapon implements Attackable {
             return baseDamage * 2;
         else
             return 0;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 
 }
