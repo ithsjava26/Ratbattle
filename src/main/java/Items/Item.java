@@ -1,4 +1,4 @@
-package weapons;
+package Items;
 
 public interface Item {
     String getName();

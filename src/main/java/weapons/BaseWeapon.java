@@ -1,5 +1,7 @@
 package weapons;
 
+import Items.Item;
+
 abstract class BaseWeapon implements Attackable, Item {
 
     private final String name;
