@@ -1,6 +1,6 @@
 package weapons;
 
-import Items.Item;
+import items.Item;
 
 abstract class BaseWeapon implements Attackable, Item {
 
