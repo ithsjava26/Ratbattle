@@ -20,8 +20,8 @@ class BaseWeaponTest {
     }
 
     @Test
-    @DisplayName("When attackChance is 90 - 95 it should return double damage")
-    void calculateDamageShouldReturnBaseDamageIfChanceIs90To95() {
+    @DisplayName("When attackChance is 91 - 95 it should return double damage")
+    void calculateDamageShouldReturnBaseDamageIfChanceIs91To95() {
         int chance = 93;
         int attackDamage = 10;
         MeleeWeapon testWeapon = new MeleeWeapon("Kniv", attackDamage);
@@ -31,8 +31,8 @@ class BaseWeaponTest {
     }
 
     @Test
-    @DisplayName("If chance is 95 - 100 calculateDamage should return 0")
-    void calculateDamageShouldReturn0IfChanceIs95To100() {
+    @DisplayName("If chance is 96 - 100 calculateDamage should return 0")
+    void calculateDamageShouldReturn0IfChanceIs96To100() {
         int chance = 97;
         int attackDamage = 10;
         MeleeWeapon testWeapon = new MeleeWeapon("Kniv", attackDamage);
