@@ -4,16 +4,19 @@ package elise;
 import inventory.Inventory;
 import weapons.Attackable;
 import weapons.MeleeWeapon;
+import weapons.RangedWeapon;
 
 public class Hero {
 
     private int health;
-    private Attackable weapon;
+    private Attackable meleeWeapon;
+    private RangedWeapon rangedWeapon;
     private Inventory inventory;
 
     public Hero() {
         this.health = 100;
-        this.weapon = new MeleeWeapon("Knife", 10);
+        this.meleeWeapon = new MeleeWeapon("Knife", 10);
+        this.rangedWeapon = new RangedWeapon("Pistol", 20, 6);
         this.inventory = new Inventory();
     }
 
@@ -35,7 +38,15 @@ public class Hero {
         }
     }
 
-    public int attack() {
-        return weapon.causeDamage();
+    public int attackMelee() {
+        return meleeWeapon.causeDamage();
+    }
+
+    public int attackRange() {
+        return rangedWeapon.causeDamage();
+    }
+
+    public void printInventory() {
+        inventory.printInventory();
     }
 }

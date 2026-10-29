@@ -17,6 +17,7 @@ public class SewerRat implements RatEnemys {
         return health > 0;
     }
 
+    @Override
     public int getHealth() {
         return health;
     }

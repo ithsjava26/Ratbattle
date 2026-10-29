@@ -28,7 +28,6 @@ public class Inventory {
             IO.println("There are no items in your inventory.");
             return;
         }
-
         getItemCounts().forEach((name, count) -> {
             IO.println(name + " x" + count);
         });
