@@ -51,7 +51,8 @@ public class Battle {
                     if (inputChoice.equalsIgnoreCase("n"))
                         continue;
                     else if (inputChoice.equalsIgnoreCase("y")) {
-                        hero.restoreHealth;
+                        //Todo: Lägg till restoreHealth i Hero-klassen.
+                        //hero.restoreHealth;
                     } else {
                         IO.println("Invalid input!");
                         continue;
@@ -61,12 +62,16 @@ public class Battle {
                     IO.println("Invalid choice.");
                     continue;
                 }
-
-                //Varje handling ska följas av fiendens handling.
-
             }
+            if (!enemy.isAlive())
+                continue;
+
+            IO.println("Enemy attacks!");
+            damage = enemy.attack();
+            hero.takeDamage(damage);
 
             //Belöning ska delas ut om spelaren vinner.
+            //Todo: En metod för att ta emot rewards efter en strid i Hero-klassen.
 
         }
 
