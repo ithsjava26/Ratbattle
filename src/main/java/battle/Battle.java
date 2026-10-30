@@ -44,7 +44,18 @@ public class Battle {
                 }
                 case "3" -> {
                     //Använda föremål (Potion)
-                    hero.printInventory();
+                    if (!hero.printInventory())
+                        continue;
+
+                    inputChoice = IO.readln("Do you want to use a potion? y/n: ");
+                    if (inputChoice.equalsIgnoreCase("n"))
+                        continue;
+                    else if (inputChoice.equalsIgnoreCase("y")) {
+                        hero.restoreHealth;
+                    } else {
+                        IO.println("Invalid input!");
+                        continue;
+                    }
                 }
                 default -> {
                     IO.println("Invalid choice.");

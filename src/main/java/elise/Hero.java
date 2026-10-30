@@ -46,7 +46,7 @@ public class Hero {
         return rangedWeapon.causeDamage();
     }
 
-    public void printInventory() {
-        inventory.printInventory();
+    public boolean printInventory() {
+        return inventory.printInventory();
     }
 }
