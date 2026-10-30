@@ -22,10 +22,13 @@ abstract class BaseWeapon implements Attackable, Item {
     public int calculateDamage(int attackChance) {
         if (attackChance <= 90)
             return baseDamage;
-        else if (attackChance <= 95)
+        else if (attackChance <= 95) {
+            IO.println("Critical hit!");
             return baseDamage * 2;
-        else
+        } else {
+            IO.println("Miss!");
             return 0;
+        }
     }
 
     @Override

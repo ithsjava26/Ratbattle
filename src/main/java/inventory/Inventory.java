@@ -23,15 +23,17 @@ public class Inventory {
         return new ArrayList<>(items);
     }
 
-    public void printInventory() {
+    public boolean printInventory() {
+        boolean containsInventory = false;
         if (items.isEmpty()) {
             IO.println("There are no items in your inventory.");
-            return;
+            return containsInventory;
         }
-
         getItemCounts().forEach((name, count) -> {
             IO.println(name + " x" + count);
         });
+        containsInventory = true;
+        return containsInventory;
     }
 
     public Map<String, Long> getItemCounts() {
