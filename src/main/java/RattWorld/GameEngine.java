@@ -6,6 +6,8 @@ public class GameEngine {
     private boolean gameRunning;
     private int currentRoom;
 
+    private final int maxRooms = 5;
+
     // Constructor
     public GameEngine() {
         this.gameRunning = false;
@@ -15,6 +17,8 @@ public class GameEngine {
     // Start the game
     public void startGame() {
         gameRunning = true;
+        currentRoom = 1;
+
         System.out.println("Welcome to RattBattle!");
         System.out.println("You are now in room " + currentRoom);
     }
@@ -37,11 +41,20 @@ public class GameEngine {
 
     // Move to the next room
     public void nextRoom() {
-        if (gameRunning) {
-            currentRoom++;
-            System.out.println("You moved to room " + currentRoom);
-        } else {
+
+        if (!gameRunning) {
             System.out.println("Start the game first!");
+            return;
+        }
+
+        if (currentRoom < maxRooms) {
+            currentRoom++;
+
+            System.out.println("You moved to room " + currentRoom);
+
+        } else {
+            System.out.println("You completed all rooms!");
+            endGame();
         }
     }
 }
