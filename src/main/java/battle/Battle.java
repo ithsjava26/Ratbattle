@@ -80,29 +80,13 @@ public class Battle {
     private void displayHp(Hero hero, RatEnemys enemy) {
         int heroHealth = hero.getHealth();
         int enemyHealth = enemy.getHealth();
-        HpColor heroTextColor;
-        HpColor enemyTextColor;
 
         int heroHpPercent = (heroHealth * 100) / hero.getMaxHealth();
         int enemyHpPercent = (enemyHealth * 100) / enemy.getMaxHealth();
 
-        if (heroHpPercent >= 75)
-            heroTextColor = HpColor.GREEN;
-        else if (heroHpPercent >= 50)
-            heroTextColor = HpColor.YELLOW;
-        else if (heroHpPercent >= 25)
-            heroTextColor = HpColor.ORANGE;
-        else
-            heroTextColor = HpColor.RED;
+        HpColor heroTextColor = HpColor.fromPercentage(heroHpPercent);
+        HpColor enemyTextColor = HpColor.fromPercentage(enemyHpPercent);
 
-        if (enemyHpPercent >= 75)
-            enemyTextColor = HpColor.GREEN;
-        else if (enemyHpPercent >= 50)
-            enemyTextColor = HpColor.YELLOW;
-        else if (enemyHpPercent >= 25)
-            enemyTextColor = HpColor.ORANGE;
-        else
-            enemyTextColor = HpColor.RED;
 
         IO.println("Your HP: " + heroTextColor + heroHealth + "/" + hero.getMaxHealth() + HpColor.RESET
                 + "\tEnemy HP: " + enemyTextColor + enemyHealth + "/" + enemy.getMaxHealth() + HpColor.RESET);

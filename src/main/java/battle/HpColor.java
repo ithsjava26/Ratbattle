@@ -18,4 +18,15 @@ public enum HpColor {
         return ansiCode;
     }
 
+    public static HpColor fromPercentage(int percent) {
+        if (percent >= 75)
+            return GREEN;
+        else if (percent >= 50)
+            return YELLOW;
+        else if (percent >= 25)
+            return ORANGE;
+        else
+            return RED;
+    }
+
 }
