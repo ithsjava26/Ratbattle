@@ -76,4 +76,6 @@ public class Battle {
         }
 
     }
+
+    private displayHp()
 }

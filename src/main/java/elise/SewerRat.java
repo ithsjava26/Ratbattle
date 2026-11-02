@@ -23,6 +23,11 @@ public class SewerRat implements RatEnemys {
     }
 
     @Override
+    public int getMaxHealth() {
+        return 30;
+    }
+
+    @Override
     public int attack() {
         return 5;
     }

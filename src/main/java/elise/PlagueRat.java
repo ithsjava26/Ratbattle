@@ -43,6 +43,11 @@ public class PlagueRat implements RatEnemys {
         return health;
     }
 
+    @Override
+    public int getMaxHealth() {
+        return 50;
+    }
+
     /**
      * Metoden slumpar fram om hjältens belöning efter att ha dödat
      * råttan skall vara i form av hälsodryck eller skott till pistolen.

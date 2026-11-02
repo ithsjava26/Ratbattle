@@ -14,6 +14,8 @@ public interface RatEnemys {
     //Björn lägger till getHealth för att underlätta koden i Battle
     int getHealth();
 
+    int getMaxHealth();
+
     //abstrakt metod (måste implementeras)
     Reward getReward();
 }
