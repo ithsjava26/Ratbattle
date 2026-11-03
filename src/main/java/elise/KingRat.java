@@ -28,6 +28,11 @@ public class KingRat implements RatEnemys {
     }
 
     @Override
+    public int getMaxHealth() {
+        return 100;
+    }
+
+    @Override
     public Reward getReward() {
         // slumpar fram om belöningen är HP eller skott
         // Hero-klassen hanterar vad belöningen är i mängd.

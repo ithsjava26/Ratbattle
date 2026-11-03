@@ -22,7 +22,7 @@ public class Battle {
         //While behöver att hero.isAlive finns.
         while (hero.isAlive() && enemy.isAlive()) {
 
-            IO.println("Your HP: " + hero.getHealth() + "\tEnemy HP: " + enemy.getHealth());
+            displayHp(hero, enemy);
             IO.println("================================");
 
             IO.println(battleMenu);
@@ -74,6 +74,22 @@ public class Battle {
             //Todo: En metod för att ta emot rewards efter en strid i Hero-klassen.
 
         }
+
+    }
+
+    private void displayHp(Hero hero, RatEnemys enemy) {
+        int heroHealth = hero.getHealth();
+        int enemyHealth = enemy.getHealth();
+
+        int heroHpPercent = (heroHealth * 100) / hero.getMaxHealth();
+        int enemyHpPercent = (enemyHealth * 100) / enemy.getMaxHealth();
+
+        HpColor heroTextColor = HpColor.fromPercentage(heroHpPercent);
+        HpColor enemyTextColor = HpColor.fromPercentage(enemyHpPercent);
+
+
+        IO.println("Your HP: " + heroTextColor + heroHealth + "/" + hero.getMaxHealth() + HpColor.RESET
+                + "\tEnemy HP: " + enemyTextColor + enemyHealth + "/" + enemy.getMaxHealth() + HpColor.RESET);
 
     }
 }
