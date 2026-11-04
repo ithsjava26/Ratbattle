@@ -2,6 +2,7 @@
 package elise;
 
 import inventory.Inventory;
+import items.Potion;
 import weapons.Attackable;
 import weapons.MeleeWeapon;
 import weapons.RangedWeapon;
@@ -55,5 +56,13 @@ public class Hero {
 
     public boolean printInventory() {
         return inventory.printInventory();
+    }
+
+    public void addPotion() {
+        inventory.addItem(new Potion("Health potion", 50));
+    }
+
+    public void addAmmo(int amount) {
+        rangedWeapon.addAmmo(amount);
     }
 }

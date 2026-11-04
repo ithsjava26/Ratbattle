@@ -5,6 +5,12 @@ package org.example;
 public class Main {
     static void main() {
 
+//        Hero hero = new Hero(100);
+//        PlagueRat plagueRat = new PlagueRat();
+//        Battle battle = new Battle();
+//        battle.battleSystem(hero, plagueRat);
+
+
         }
     }
 

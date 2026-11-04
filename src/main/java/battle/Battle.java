@@ -3,6 +3,7 @@ package battle;
 import elise.Hero;
 import elise.RatEnemys;
 
+
 public class Battle {
 
     public void battleSystem(Hero hero, RatEnemys enemy) {
@@ -70,13 +71,15 @@ public class Battle {
             damage = enemy.attack();
             hero.takeDamage(damage);
 
-            //Belöning ska delas ut om spelaren vinner.
-            //Todo: En metod för att ta emot rewards efter en strid i Hero-klassen.
-
+        }
+        //Belöning ska delas ut om spelaren vinner.
+        if (hero.isAlive()) {
+            IO.println("You defeated the enemy!");
+            recieveReward(hero, enemy);
         }
 
-    }
 
+    }
     private void displayHp(Hero hero, RatEnemys enemy) {
         int heroHealth = hero.getHealth();
         int enemyHealth = enemy.getHealth();
@@ -92,4 +95,14 @@ public class Battle {
                 + "\tEnemy HP: " + enemyTextColor + enemyHealth + "/" + enemy.getMaxHealth() + HpColor.RESET);
 
     }
+
+    private void recieveReward(Hero hero, RatEnemys enemy) {
+
+        switch (enemy.getReward()) {
+            case POTION -> hero.addPotion();
+            case AMMO -> hero.addAmmo(3);
+        }
+
+    }
+
 }
