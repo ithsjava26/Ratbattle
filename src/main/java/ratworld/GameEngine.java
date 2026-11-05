@@ -21,7 +21,7 @@ public class GameEngine {
         gameRunning = false;
         currentRoom = 1;
 
-        hero = new Hero(100);
+        hero = new Hero();
         battle = new Battle();
 
         rooms = new Room[5];
