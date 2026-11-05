@@ -75,7 +75,7 @@ public class Battle {
         //Belöning ska delas ut om spelaren vinner.
         if (hero.isAlive()) {
             IO.println("You defeated the enemy!");
-            recieveReward(hero, enemy);
+            receiveReward(hero, enemy);
         }
 
 
@@ -92,11 +92,22 @@ public class Battle {
 
 
         IO.println("Your HP: " + heroTextColor + heroHealth + "/" + hero.getMaxHealth() + HpColor.RESET
-                + "\tEnemy HP: " + enemyTextColor + enemyHealth + "/" + enemy.getMaxHealth() + HpColor.RESET);
+                + "\t\t\t" + enemy.getName() + " HP: " + enemyTextColor
+                + enemyHealth + "/" + enemy.getMaxHealth() + HpColor.RESET);
+        IO.println(heroTextColor + createHpBar(heroHpPercent) + HpColor.RESET + "\t"
+                + enemyTextColor + createHpBar(enemyHpPercent) + HpColor.RESET);
 
     }
 
-    private void recieveReward(Hero hero, RatEnemys enemy) {
+    private String createHpBar(int percent) {
+        int totalBlocks = 15;
+        int filledBlocks = (percent * totalBlocks) / 100;
+        int emptyBlocks = totalBlocks - filledBlocks;
+
+        return "[" + "▮".repeat(filledBlocks) + "▯".repeat(emptyBlocks) + "]";
+    }
+
+    private void receiveReward(Hero hero, RatEnemys enemy) {
 
         switch (enemy.getReward()) {
             case POTION -> hero.addPotion();

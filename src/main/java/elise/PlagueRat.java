@@ -65,4 +65,9 @@ public class PlagueRat implements RatEnemys {
         }
         return Reward.AMMO;
     }
+
+    @Override
+    public String getName() {
+        return "Plague Rat";
+    }
 }

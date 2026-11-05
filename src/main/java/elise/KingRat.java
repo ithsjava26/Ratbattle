@@ -44,4 +44,9 @@ public class KingRat implements RatEnemys {
         }
         return Reward.AMMO;
     }
+
+    @Override
+    public String getName() {
+        return "King Rat";
+    }
 }
