@@ -1,12 +1,16 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import RattWorld.GameMenu;
+
 public class Main {
-    static void main() {
 
 
 
         }
     }
 
+        GameMenu menu = new GameMenu();
+
+        menu.showMenu();
+    }
+}
