@@ -1,32 +1,27 @@
 package RattWorld;
 
+import elise.RatEnemys;
+
 public class Room {
 
     private int roomNumber;
     private String roomName;
     private String description;
+    private RatEnemys enemy;
 
-    // Constructor
-    public Room(int roomNumber, String roomName, String description) {
+    public Room(int roomNumber, String roomName,
+                String description, RatEnemys enemy) {
+
         this.roomNumber = roomNumber;
         this.roomName = roomName;
         this.description = description;
+        this.enemy = enemy;
     }
 
-    // Getters
-    public int getRoomNumber() {
-        return roomNumber;
+    public RatEnemys getEnemy() {
+        return enemy;
     }
 
-    public String getRoomName() {
-        return roomName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    // Display room information
     public void displayRoom() {
         System.out.println("Room " + roomNumber + ": " + roomName);
         System.out.println(description);

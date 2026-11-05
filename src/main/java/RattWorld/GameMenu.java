@@ -8,30 +8,36 @@ public class GameMenu {
     private Scanner scanner;
     private GameEngine game;
 
+    // Constructor
     public GameMenu() {
+
         scanner = new Scanner(System.in);
         game = new GameEngine();
     }
 
+    // Show menu
     public void showMenu() {
 
         boolean menuRunning = true;
 
         while (menuRunning) {
 
-            System.out.println("====================");
-            System.out.println("    RAT BATTLE");
-            System.out.println("====================");
+            System.out.println("======================");
+            System.out.println("      RAT BATTLE");
+            System.out.println("======================");
 
             System.out.println("1. Start new adventure");
-            System.out.println("2. Continue saved game");
-            System.out.println("3. Show hero equipment");
-            System.out.println("4. Fight next enemy");
+            System.out.println("2. Show current room");
+            System.out.println("3. Show hero health");
+            System.out.println("4. Fight enemy");
+            System.out.println("5. Go to next room");
             System.out.println("e. Exit");
 
             System.out.print("Choose an option: ");
 
-            String choice = scanner.nextLine().trim().toLowerCase();
+            String choice = scanner.nextLine()
+                    .trim()
+                    .toLowerCase();
 
             switch (choice) {
 
@@ -40,15 +46,24 @@ public class GameMenu {
                     break;
 
                 case "2":
-                    System.out.println("Continue saved game");
+                    game.showCurrentRoom();
                     break;
 
                 case "3":
-                    System.out.println("Show hero equipment");
+                    System.out.println(
+                            "Hero health: "
+                                    + game.getHero().getHealth()
+                    );
                     break;
 
                 case "4":
-                    System.out.println("Fight next enemy");
+                    System.out.println(
+                            "Battle system is not ready yet."
+                    );
+                    break;
+
+                case "5":
+                    game.nextRoom();
                     break;
 
                 case "e":
@@ -60,5 +75,7 @@ public class GameMenu {
                     System.out.println("Invalid choice!");
             }
         }
+
+        scanner.close();
     }
 }

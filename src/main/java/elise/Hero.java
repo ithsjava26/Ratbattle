@@ -15,7 +15,7 @@ public class Hero {
     private RangedWeapon rangedWeapon;
     private Inventory inventory;
 
-    public Hero(int maxHealth) {
+    public Hero() {
         this.maxHealth = 100;
         this.health = 100;
         this.meleeWeapon = new MeleeWeapon("Knife", 10);
