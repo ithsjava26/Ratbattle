@@ -45,6 +45,19 @@ public class Hero {
         }
     }
 
+    /**
+     * Metoden ökar hjältens HP när hjälten dricker en hälsodryck.
+     * @return
+     */
+    public void restoreHealth(int amount) {
+        if (amount > 0) {
+            health += amount;
+            if (health > maxHealth) {
+                health = maxHealth;
+            }
+        }
+    }
+
     public int attackMelee() {
         return meleeWeapon.causeDamage();
     }
