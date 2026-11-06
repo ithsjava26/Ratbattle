@@ -96,7 +96,6 @@ public class Battle {
                 + enemyHealth + "/" + enemy.getMaxHealth() + HpColor.RESET);
         IO.println(heroTextColor + createHpBar(heroHpPercent) + HpColor.RESET + "\t"
                 + enemyTextColor + createHpBar(enemyHpPercent) + HpColor.RESET);
-
     }
 
     private String createHpBar(int percent) {
