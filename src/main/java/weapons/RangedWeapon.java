@@ -19,4 +19,8 @@ public class RangedWeapon extends BaseWeapon {
         IO.println("KLICK! Out of amunition!");
         return 0;
     }
+
+    public int addAmmo(int amount) {
+        return amunition += amount;
+    }
 }
