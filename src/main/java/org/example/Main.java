@@ -1,6 +1,6 @@
 package org.example;
 
-import RattWorld.GameMenu;
+import ratworld.GameMenu;
 
 public class Main {
 
