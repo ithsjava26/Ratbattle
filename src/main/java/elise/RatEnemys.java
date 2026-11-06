@@ -18,4 +18,7 @@ public interface RatEnemys {
 
     //abstrakt metod (måste implementeras)
     Reward getReward();
+
+    //Behövs för att utskriften i Battle ska bli tydligare
+    String getName();
 }

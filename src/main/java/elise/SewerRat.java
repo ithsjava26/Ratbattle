@@ -44,4 +44,9 @@ public class SewerRat implements RatEnemys {
         }
         return Reward.AMMO;
     }
+
+    @Override
+    public String getName() {
+        return "Sewer Rat";
+    }
 }
