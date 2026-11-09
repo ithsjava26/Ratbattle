@@ -52,8 +52,7 @@ public class Battle {
                     if (inputChoice.equalsIgnoreCase("n"))
                         continue;
                     else if (inputChoice.equalsIgnoreCase("y")) {
-                        //Todo: Lägg till restoreHealth i Hero-klassen.
-                        //hero.restoreHealth;
+                        hero.usePotion();
                     } else {
                         IO.println("Invalid input!");
                         continue;

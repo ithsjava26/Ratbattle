@@ -2,10 +2,13 @@
 package elise;
 
 import inventory.Inventory;
+import items.Item;
 import items.Potion;
 import weapons.Attackable;
 import weapons.MeleeWeapon;
 import weapons.RangedWeapon;
+
+import java.util.List;
 
 public class Hero {
 
@@ -57,6 +60,21 @@ public class Hero {
                 health = maxHealth;
             }
         }
+    }
+
+    public boolean usePotion() {
+        List<Item> itemList = inventory.findItem();
+
+        for (int i = 0; i < itemList.size(); i++) {
+            Item item = itemList.get(i);
+
+            if (item instanceof Potion potion) {
+                restoreHealth(potion.getHealAmount());
+                inventory.removeItem(item);
+                return true;
+            }
+        }
+        return false;
     }
 
     public int attackMelee() {
