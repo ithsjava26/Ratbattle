@@ -24,13 +24,17 @@ public class Hero {
         this.meleeWeapon = new MeleeWeapon("Knife", 10);
         this.rangedWeapon = new RangedWeapon("Pistol", 20, 6);
         this.inventory = new Inventory();
+
+        //Add start potions
+        for (int i = 0; i < 3; i++) {
+            addPotion();
+        }
     }
 
     public int getHealth() {
         return health;
     }
 
-    //Björn har lagt till maxHealth med getter för att fortsätta bygga Battle
     public int getMaxHealth() {
         return maxHealth;
     }
