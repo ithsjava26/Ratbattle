@@ -14,4 +14,8 @@ public class Potion implements Item {
     public String getName() {
         return this.name;
     }
+
+    public int getHealAmount() {
+        return healAmount;
+    }
 }
