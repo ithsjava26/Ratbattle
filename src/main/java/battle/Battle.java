@@ -16,7 +16,7 @@ public class Battle {
                 ================
                 1. Melee attack
                 2. Range attack
-                3. Use item
+                3. Use potion
                 ================
                 \n""";
 
@@ -92,7 +92,7 @@ public class Battle {
 
 
         IO.println("Your HP: " + heroTextColor + heroHealth + "/" + hero.getMaxHealth() + HpColor.RESET
-                + "\t\t\t" + enemy.getName() + " HP: " + enemyTextColor
+                + "\t\t\t\t" + enemy.getName() + " HP: " + enemyTextColor
                 + enemyHealth + "/" + enemy.getMaxHealth() + HpColor.RESET);
         IO.println(heroTextColor + createHpBar(heroHpPercent) + HpColor.RESET + "\t"
                 + enemyTextColor + createHpBar(enemyHpPercent) + HpColor.RESET);
