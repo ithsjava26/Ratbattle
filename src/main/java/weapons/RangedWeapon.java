@@ -2,18 +2,18 @@ package weapons;
 
 public class RangedWeapon extends BaseWeapon {
 
-    private int amunition;
+    private int ammunition;
 
     public RangedWeapon(String name, int attackDamage, int amunition) {
         super(name, attackDamage);
-        this.amunition = amunition;
+        this.ammunition = amunition;
     }
 
     @Override
     public int causeDamage() {
 
-        if (amunition > 0) {
-            amunition -= 1;
+        if (ammunition > 0) {
+            ammunition -= 1;
             return super.causeDamage();
         }
         IO.println("KLICK! Out of amunition!");
@@ -21,6 +21,10 @@ public class RangedWeapon extends BaseWeapon {
     }
 
     public int addAmmo(int amount) {
-        return amunition += amount;
+        return ammunition += amount;
+    }
+
+    public int getAmmunition() {
+        return ammunition;
     }
 }

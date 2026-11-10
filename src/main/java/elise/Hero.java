@@ -35,6 +35,16 @@ public class Hero {
         return health;
     }
 
+    public void setHealth(int health) {
+        if (health < 0) {
+            this.health = 0;
+        } else if (health > maxHealth) {
+            this.health = maxHealth;
+        } else {
+            this.health = health;
+        }
+    }
+
     public int getMaxHealth() {
         return maxHealth;
     }
@@ -99,5 +109,9 @@ public class Hero {
 
     public void addAmmo(int amount) {
         rangedWeapon.addAmmo(amount);
+    }
+
+    public int getAmmo() {
+        return rangedWeapon.getAmmunition();
     }
 }
