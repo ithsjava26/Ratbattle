@@ -2,9 +2,13 @@
 package elise;
 
 import inventory.Inventory;
+import items.Item;
+import items.Potion;
 import weapons.Attackable;
 import weapons.MeleeWeapon;
 import weapons.RangedWeapon;
+
+import java.util.List;
 
 public class Hero {
 
@@ -20,13 +24,17 @@ public class Hero {
         this.meleeWeapon = new MeleeWeapon("Knife", 10);
         this.rangedWeapon = new RangedWeapon("Pistol", 20, 6);
         this.inventory = new Inventory();
+
+        //Add start potions
+        for (int i = 0; i < 3; i++) {
+            addPotion();
+        }
     }
 
     public int getHealth() {
         return health;
     }
 
-    //Björn har lagt till maxHealth med getter för att fortsätta bygga Battle
     public int getMaxHealth() {
         return maxHealth;
     }
@@ -45,6 +53,34 @@ public class Hero {
         }
     }
 
+    /**
+     * Metoden ökar hjältens HP när hjälten dricker en hälsodryck.
+     * @return
+     */
+    public void restoreHealth(int amount) {
+        if (amount > 0) {
+            health += amount;
+            if (health > maxHealth) {
+                health = maxHealth;
+            }
+        }
+    }
+
+    public boolean usePotion() {
+        List<Item> itemList = inventory.findItem();
+
+        for (int i = 0; i < itemList.size(); i++) {
+            Item item = itemList.get(i);
+
+            if (item instanceof Potion potion) {
+                restoreHealth(potion.getHealAmount());
+                inventory.removeItem(item);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public int attackMelee() {
         return meleeWeapon.causeDamage();
     }
@@ -55,5 +91,13 @@ public class Hero {
 
     public boolean printInventory() {
         return inventory.printInventory();
+    }
+
+    public void addPotion() {
+        inventory.addItem(new Potion("Health potion", 50));
+    }
+
+    public void addAmmo(int amount) {
+        rangedWeapon.addAmmo(amount);
     }
 }

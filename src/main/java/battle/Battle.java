@@ -3,6 +3,7 @@ package battle;
 import elise.Hero;
 import elise.RatEnemys;
 
+
 public class Battle {
 
     public void battleSystem(Hero hero, RatEnemys enemy) {
@@ -51,8 +52,7 @@ public class Battle {
                     if (inputChoice.equalsIgnoreCase("n"))
                         continue;
                     else if (inputChoice.equalsIgnoreCase("y")) {
-                        //Todo: Lägg till restoreHealth i Hero-klassen.
-                        //hero.restoreHealth;
+                        hero.usePotion();
                     } else {
                         IO.println("Invalid input!");
                         continue;
@@ -70,13 +70,15 @@ public class Battle {
             damage = enemy.attack();
             hero.takeDamage(damage);
 
-            //Belöning ska delas ut om spelaren vinner.
-            //Todo: En metod för att ta emot rewards efter en strid i Hero-klassen.
-
+        }
+        //Belöning ska delas ut om spelaren vinner.
+        if (hero.isAlive()) {
+            IO.println("You defeated the enemy!");
+            receiveReward(hero, enemy);
         }
 
-    }
 
+    }
     private void displayHp(Hero hero, RatEnemys enemy) {
         int heroHealth = hero.getHealth();
         int enemyHealth = enemy.getHealth();
@@ -89,7 +91,27 @@ public class Battle {
 
 
         IO.println("Your HP: " + heroTextColor + heroHealth + "/" + hero.getMaxHealth() + HpColor.RESET
-                + "\tEnemy HP: " + enemyTextColor + enemyHealth + "/" + enemy.getMaxHealth() + HpColor.RESET);
+                + "\t\t\t" + enemy.getName() + " HP: " + enemyTextColor
+                + enemyHealth + "/" + enemy.getMaxHealth() + HpColor.RESET);
+        IO.println(heroTextColor + createHpBar(heroHpPercent) + HpColor.RESET + "\t"
+                + enemyTextColor + createHpBar(enemyHpPercent) + HpColor.RESET);
+    }
+
+    private String createHpBar(int percent) {
+        int totalBlocks = 15;
+        int filledBlocks = (percent * totalBlocks) / 100;
+        int emptyBlocks = totalBlocks - filledBlocks;
+
+        return "[" + "▮".repeat(filledBlocks) + "▯".repeat(emptyBlocks) + "]";
+    }
+
+    private void receiveReward(Hero hero, RatEnemys enemy) {
+
+        switch (enemy.getReward()) {
+            case POTION -> hero.addPotion();
+            case AMMO -> hero.addAmmo(3);
+        }
 
     }
+
 }
