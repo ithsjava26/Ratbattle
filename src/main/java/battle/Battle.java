@@ -24,6 +24,7 @@ public class Battle {
         while (hero.isAlive() && enemy.isAlive()) {
 
             displayHp(hero, enemy);
+            IO.println("Current ammunition: " + hero.getAmmo());
             IO.println("================================");
 
             IO.println(battleMenu);
@@ -108,8 +109,14 @@ public class Battle {
     private void receiveReward(Hero hero, RatEnemys enemy) {
 
         switch (enemy.getReward()) {
-            case POTION -> hero.addPotion();
-            case AMMO -> hero.addAmmo(3);
+            case POTION -> {
+                IO.println("\nThe enemy dropped a Health potion!");
+                hero.addPotion();
+            }
+            case AMMO -> {
+                IO.println("\nThe enemy dropped 3 bullets!");
+                hero.addAmmo(3);
+            }
         }
 
     }
