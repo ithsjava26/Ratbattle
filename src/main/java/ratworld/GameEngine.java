@@ -120,10 +120,6 @@ public class GameEngine {
         );
     }
 
-    // Check if hero is alive
-    public boolean isHeroAlive() {
-        return hero.isAlive();
-    }
 
     // Start battle with current enemy
     public void fightCurrentEnemy() {
