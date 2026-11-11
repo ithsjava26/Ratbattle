@@ -15,6 +15,7 @@ public class GameEngine {
     private Room[] rooms;
     private Hero hero;
     private Battle battle;
+    private SaveGame saveGame;
 
     public GameEngine() {
 
@@ -25,6 +26,8 @@ public class GameEngine {
         battle = new Battle();
 
         rooms = new Room[5];
+
+        saveGame = new SaveGame();
 
         rooms[0] = new Room(
                 1,
@@ -191,4 +194,61 @@ public class GameEngine {
             endGame();
         }
     }
+
+    // Save current game progress
+    public void saveCurrentGame() {
+
+        int[] enemyHealth = new int[rooms.length];
+
+        for (int i = 0; i < rooms.length; i++) {
+            enemyHealth[i] = rooms[i].getEnemy().getHealth();
+        }
+
+        saveGame.save(
+                currentRoom,
+                hero.getHealth(),
+                enemyHealth
+        );
+    }
+
+    // Load saved game progress
+    public void loadSavedGame() {
+
+        GameSaveData data = saveGame.load();
+
+        if (data == null) {
+            return;
+        }
+
+        int savedRoom = data.getCurrentRoom();
+        int[] savedEnemyHealth = data.getEnemyHealth();
+
+        if (savedRoom < 1 || savedRoom > rooms.length
+                || savedEnemyHealth.length != rooms.length) {
+            System.out.println("Invalid save data.");
+            return;
+        }
+
+        currentRoom = savedRoom;
+
+        for (int i = 0; i < rooms.length; i++) {
+
+            RatEnemys enemy = rooms[i].getEnemy();
+
+            int damage = enemy.getMaxHealth() - savedEnemyHealth[i];
+
+            if (damage > 0) {
+                enemy.takeDamage(damage);
+            }
+        }
+
+        // Add hero.setHealth(data.getHeroHealth())
+        // after your teammate adds setHealth() to Hero.java.
+
+        gameRunning = true;
+
+        System.out.println("Game restored successfully!");
+        showCurrentRoom();
+    }
+
 }
