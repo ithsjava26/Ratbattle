@@ -4,9 +4,7 @@ package ratworld;
 import battle.Battle;
 import elise.Hero;
 import elise.RatEnemys;
-import elise.SewerRat;
-import elise.PlagueRat;
-import elise.KingRat;
+import elise.RatFactory;
 
 public class GameEngine {
 
@@ -33,35 +31,35 @@ public class GameEngine {
                 1,
                 "Dark Sewer",
                 "A dark and dirty sewer.",
-                new SewerRat()
+                RatFactory.createRat(1)
         );
 
         rooms[1] = new Room(
                 2,
                 "Old Tunnel",
                 "An old tunnel filled with strange sounds.",
-                new SewerRat()
+                RatFactory.createRat(2)
         );
 
         rooms[2] = new Room(
                 3,
                 "Rat Nest",
                 "A dangerous place full of plague rats.",
-                new PlagueRat()
+                RatFactory.createRat(3)
         );
 
         rooms[3] = new Room(
                 4,
                 "Underground Lake",
                 "A mysterious lake beneath the city.",
-                new PlagueRat()
+                RatFactory.createRat(4)
         );
 
         rooms[4] = new Room(
                 5,
                 "Rat King's Lair",
                 "The home of the dangerous Rat King.",
-                new KingRat()
+                RatFactory.createRat(5)
         );
     }
 
@@ -122,10 +120,6 @@ public class GameEngine {
         );
     }
 
-    // Check if hero is alive
-    public boolean isHeroAlive() {
-        return hero.isAlive();
-    }
 
     // Start battle with current enemy
     public void fightCurrentEnemy() {
