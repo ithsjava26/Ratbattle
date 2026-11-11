@@ -51,6 +51,15 @@ På detta sätt får vi en tydlig ansvarsfördelning där RatFactory ansvarar f�
 ansvarar för spelets gång. Om vi i framtiden vill lägga till fler fiender kan vi göra det genom att utöka RatFactory
 utan att behöva ändra logiken för hur fiender skapas i GameEngine. 
 
+För alla föremål (Potion och samtliga weapon-klasser) har Björn försökt följa factory-mönstret. Det som gjorts är att  
+ha två interface, Item och Attackable, som ska göra att de klasser som implementerar dem får de metoder de behöver.  
+Vad gäller vapnen finns en BaseWeapon som både MeleeWeapon och RangedWeapon ärver från. De har i grund och botten samma
+metod  
+för att beräkna skada, men RangedWeapon har en modifiering för att hantera ammunition. Poängen med upplägget är att all
+relevant  
+kod ska hamna så långt upp i systemet som möjligt, så när nya objekt skapas av föremål kommer de få tillgång till det de
+behöver så enkelt som möjligt.
+
 
 ## Gruppreflektion kring Git-samarbetet.
 
