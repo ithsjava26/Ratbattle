@@ -60,6 +60,15 @@ relevant
 kod ska hamna så långt upp i systemet som möjligt, så när nya objekt skapas av föremål kommer de få tillgång till det de
 behöver så enkelt som möjligt.
 
+Observer --> Interfacet RoomObserver ser till att klasser som implementerat interfacet har metoden som finns där i. 
+RoomMessageObserver och RoomVisitObserver implementerar interfacet och skriver över metoden till sina egna versioner.
+GameEngin har en metod nextRoom() där jag lade till att när spelaren går vidare till nästa rum och currentRoom räknas 
+upp så körs en for each loop som går igenom en lista med RoomObserver-typer på objekten och anropar metoden som de har 
+gemensamt en efter en så de utförs. GameEngin behöver därför inte veta vilka olika klasser som har metoderna och hur 
+metoderna ser ut i dem, den använder bara RoomObserver typen. 
+Det som gör detta till Observer-mönstret och inte bara vanlig polymorfism är att observatörerna registreras i listan
+för att få meddelanden när en viss händelse inträffar, i detta fall när spelaren går vidare till nästa rum. 
+
 
 ## Gruppreflektion kring Git-samarbetet.
 

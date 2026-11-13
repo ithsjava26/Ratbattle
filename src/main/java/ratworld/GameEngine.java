@@ -5,6 +5,12 @@ import battle.Battle;
 import elise.Hero;
 import elise.RatEnemys;
 import elise.RatFactory;
+// Lägger till importerna som behövs till denna klass för Observer-mönstret
+import observer.RoomObserver;
+import observer.RoomMessageObserver;
+import observer.RoomVisitObserver;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameEngine {
 
@@ -14,6 +20,8 @@ public class GameEngine {
     private Hero hero;
     private Battle battle;
     private SaveGame saveGame;
+    // Lägger till ett fält som skall lagra observatörer i en ArrayList med typen av interfacet RoomObserver
+    private List<RoomObserver> observers = new ArrayList<>();
 
     public GameEngine() {
 
@@ -26,6 +34,10 @@ public class GameEngine {
         rooms = new Room[5];
 
         saveGame = new SaveGame();
+
+        // Skapar observerklass-objekt och lägger till i listan
+        observers.add(new RoomMessageObserver());
+        observers.add(new RoomVisitObserver());
 
         rooms[0] = new Room(
                 1,
@@ -176,6 +188,13 @@ public class GameEngine {
         if (currentRoom < rooms.length) {
 
             currentRoom++;
+
+            // En loop som går igenom observers-listan och för varje objekt i listan anropas metoden
+            // onRoomEntered() på det objektet. Med metodanropet följer currentRoom som talar om för
+            // metoden vilket rum spelaren är på.
+            for (RoomObserver observer : observers) {
+                observer.onRoomEntered(currentRoom);
+            }
 
             System.out.println("\nMoving to the next room...");
             showCurrentRoom();
